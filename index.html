@@ -9,8 +9,8 @@
     <title>Nuclear proteins (UniProt)</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="datatables/datatables.css" rel="stylesheet">
-    <link href="datatables/datatables.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css.map" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -30,10 +30,6 @@
     <script type="text/javascript" src="js/jquery.csv.min.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
-    <script type="text/javascript" src="js/csv_to_html_table.js"></script>
-    <script type="text/javascript" src="datatables/datatables.js"></script>
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>
-
 
     <script type="text/javascript">
 
@@ -43,24 +39,8 @@
         else
           return "";
       };
-        
-      function filterGlobal(table) {
-         let filter = document.querySelector('#global_filter');
-         let regex = document.querySelector('#global_regex');
-         let smart = document.querySelector('#global_smart');
  
-         table.search(filter.value, regex.checked, smart.checked).draw();
-     };
- 
-      function filterColumn(table, i) {
-        let filter = document.querySelector('#col' + i + '_filter');
-        let regex = document.querySelector('#col' + i + '_regex');
-        let smart = document.querySelector('#col' + i + '_smart');
- 
-        table.column(i).search(filter.value, regex.checked, smart.checked).draw();
-    };
- 
-    let table = CsvToHtmlTable.init({
+    CsvToHtmlTable.init({
         csv_path: 'uniprot_only_nucl.csv',
         element: 'table-container', 
         allow_download: true,
@@ -68,21 +48,6 @@
         datatables_options: {"paging": true, "stateSave": true} ,
         custom_formatting: [[0, format_uniprot_ac]]
       });    
-        
-    document.querySelectorAll('input.global_filter').forEach((el) => {
-        el.addEventListener(el.type === 'text' ? 'keyup' : 'change', () =>
-        filterGlobal(table)
-        );
-    });
- 
-    document.querySelectorAll('input.column_filter').forEach((el) => {
-        let tr = el.closest('tr');
-        let columnIndex = tr.getAttribute('data-column');
- 
-        el.addEventListener(el.type === 'text' ? 'keyup' : 'change', () =>
-        filterColumn(table, columnIndex)
-        );
-    });
     </script>
   </body>
 </html>
