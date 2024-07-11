@@ -58,6 +58,15 @@
         table.column(i).search(filter.value, regex.checked, smart.checked).draw();
     };
  
+    let table = CsvToHtmlTable.init({
+        csv_path: 'uniprot_only_nucl.csv',
+        element: 'table-container', 
+        allow_download: true,
+        csv_options: {separator: ',', delimiter: '"'},
+        datatables_options: {"paging": true, "stateSave": true} ,
+        custom_formatting: [[0, format_uniprot_ac]]
+      });    
+        
     document.querySelectorAll('input.global_filter').forEach((el) => {
         el.addEventListener(el.type === 'text' ? 'keyup' : 'change', () =>
         filterGlobal(table)
@@ -72,15 +81,6 @@
         filterColumn(table, columnIndex)
         );
     });
-       
-    let table = CsvToHtmlTable.init({
-        csv_path: 'uniprot_only_nucl.csv',
-        element: 'table-container', 
-        allow_download: true,
-        csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": true, "stateSave": true} ,
-        custom_formatting: [[0, format_uniprot_ac]]
-      });
     </script>
   </body>
 </html>
