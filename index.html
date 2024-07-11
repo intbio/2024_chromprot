@@ -9,8 +9,8 @@
     <title>Nuclear proteins (UniProt)</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="datatables/datatables.css" rel="stylesheet">
+    <link href="datatables/datatables.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -31,6 +31,8 @@
     <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
     <script type="text/javascript" src="js/csv_to_html_table.js"></script>
+    <script type="text/javascript" src="datatables/datatables.js"></script>
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>
 
 
     <script type="text/javascript">
@@ -42,15 +44,15 @@
           return "";
       };
         
-     function filterGlobal(table) {
-     let filter = document.querySelector('#global_filter');
-     let regex = document.querySelector('#global_regex');
-     let smart = document.querySelector('#global_smart');
+      function filterGlobal(table) {
+         let filter = document.querySelector('#global_filter');
+         let regex = document.querySelector('#global_regex');
+         let smart = document.querySelector('#global_smart');
  
-     table.search(filter.value, regex.checked, smart.checked).draw();
+         table.search(filter.value, regex.checked, smart.checked).draw();
      };
  
-    function filterColumn(table, i) {
+      function filterColumn(table, i) {
         let filter = document.querySelector('#col' + i + '_filter');
         let regex = document.querySelector('#col' + i + '_regex');
         let smart = document.querySelector('#col' + i + '_smart');
