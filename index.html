@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="author" content="Derek Eder">
-    <title>Nuclear proteins (UniProt)</title>
+    <title>Oct4 interactors</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css.map" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
   </head>
 
   <body>
@@ -30,6 +30,8 @@
     <script type="text/javascript" src="js/jquery.csv.min.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="js/csv_to_html_table.js"></script>
+
 
     <script type="text/javascript">
 
@@ -39,17 +41,17 @@
         else
           return "";
       };
- 
-    CsvToHtmlTable.init({
+        
+        
+       
+      CsvToHtmlTable.init({
         csv_path: 'uniprot_only_nucl.csv',
         element: 'table-container', 
         allow_download: true,
         csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": true, "stateSave": true} ,
+        datatables_options: {"paging": false} ,
         custom_formatting: [[0, format_uniprot_ac]]
-      });    
+      });
     </script>
   </body>
 </html>
-
-
