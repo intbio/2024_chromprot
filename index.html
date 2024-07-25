@@ -40,16 +40,14 @@
           return "<a href='https://www.uniprot.org/uniprotkb/" + ac + "/entry'>" + ac + "</a>";
         else
           return "";
-      };
-        
-        
+      };  
        
       CsvToHtmlTable.init({
         csv_path: 'uniprot_only_nucl.csv',
         element: 'table-container', 
         allow_download: true,
         csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": false, "layout": {topStart: "buttons"}, "buttons": ['csv', 'excel', 'copy']},
+        datatables_options: {"paging": false, "stateSave": true},
         custom_formatting: [[0, format_uniprot_ac]]
       });
     </script>
